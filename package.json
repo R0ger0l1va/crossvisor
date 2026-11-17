@@ -1,0 +1,24 @@
+{
+  "name": "crossvisor",
+  "private": true,
+  "description": "Herramienta web para migrar máquinas virtuales de XCP-ng a Proxmox VE",
+  "type": "module",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "db:up": "docker compose up -d postgres",
+    "db:generate": "pnpm --filter @crossvisor/db run generate",
+    "db:migrate": "pnpm --filter @crossvisor/db run migrate",
+    "db:studio": "pnpm --filter @crossvisor/db run studio"
+  },
+  "devDependencies": {
+    "turbo": "2.11.11"
+  }
+}

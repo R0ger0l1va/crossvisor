@@ -1,0 +1,1106 @@
+{
+  "type": "base",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "d372199f-65a8-4f21-92d5-160393636f71",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "provider_kind"
+      ],
+      "writes": [
+        "s|enum|public.provider_kind",
+        "n|enum|public.provider_kind",
+        "e|enum|public.provider_kind",
+        "n|type|public.provider_kind"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "provider_status"
+      ],
+      "writes": [
+        "s|enum|public.provider_status",
+        "n|enum|public.provider_status",
+        "e|enum|public.provider_status",
+        "n|type|public.provider_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "migration_mode"
+      ],
+      "writes": [
+        "s|enum|public.migration_mode",
+        "n|enum|public.migration_mode",
+        "e|enum|public.migration_mode",
+        "n|type|public.migration_mode"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "log_level"
+      ],
+      "writes": [
+        "s|enum|public.log_level",
+        "n|enum|public.log_level",
+        "e|enum|public.log_level",
+        "n|type|public.log_level"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "migration_status"
+      ],
+      "writes": [
+        "s|enum|public.migration_status",
+        "n|enum|public.migration_status",
+        "e|enum|public.migration_status",
+        "n|type|public.migration_status"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_enum",
+      "statementTarget": [
+        "enum",
+        "public",
+        "migration_step"
+      ],
+      "writes": [
+        "s|enum|public.migration_step",
+        "n|enum|public.migration_step",
+        "e|enum|public.migration_step",
+        "n|type|public.migration_step"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "providers"
+      ],
+      "writes": [
+        "s|tbl|public.providers",
+        "n|tbl|public.providers",
+        "e|tbl|public.providers",
+        "n|rel|public.providers",
+        "n|type|public.providers",
+        "n|rel|public.providers_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.provider_kind",
+        "n|enum|public.provider_status"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "plans"
+      ],
+      "writes": [
+        "s|tbl|public.plans",
+        "n|tbl|public.plans",
+        "e|tbl|public.plans",
+        "n|rel|public.plans",
+        "n|type|public.plans",
+        "n|rel|public.plans_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.migration_mode"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "migration_logs"
+      ],
+      "writes": [
+        "s|tbl|public.migration_logs",
+        "n|tbl|public.migration_logs",
+        "e|tbl|public.migration_logs",
+        "n|rel|public.migration_logs",
+        "n|type|public.migration_logs",
+        "n|rel|public.migration_logs_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.log_level",
+        "n|enum|public.migration_step"
+      ]
+    },
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "migrations"
+      ],
+      "writes": [
+        "s|tbl|public.migrations",
+        "n|tbl|public.migrations",
+        "e|tbl|public.migrations",
+        "n|rel|public.migrations",
+        "n|type|public.migrations",
+        "n|rel|public.migrations_pkey"
+      ],
+      "reads": [
+        "n|sch|public",
+        "n|enum|public.migration_status",
+        "n|enum|public.migration_step"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "migration_logs",
+        "migration_logs_migration_idx"
+      ],
+      "writes": [
+        "s|idx|public.migration_logs_migration_idx",
+        "n|idx|public.migration_logs_migration_idx",
+        "e|idx|public.migration_logs_migration_idx",
+        "n|rel|public.migration_logs_migration_idx"
+      ],
+      "reads": [
+        "n|tbl|public.migration_logs",
+        "n|sch|public",
+        "n|col|public.migration_logs.migration_id",
+        "n|col|public.migration_logs.id"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "migrations",
+        "migrations_plan_idx"
+      ],
+      "writes": [
+        "s|idx|public.migrations_plan_idx",
+        "n|idx|public.migrations_plan_idx",
+        "e|idx|public.migrations_plan_idx",
+        "n|rel|public.migrations_plan_idx"
+      ],
+      "reads": [
+        "n|tbl|public.migrations",
+        "n|sch|public",
+        "n|col|public.migrations.plan_id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "plans"
+      ],
+      "writes": [
+        "s|fk|public.plans.plans_source_provider_id_providers_id_fkey",
+        "n|fk|public.plans.plans_source_provider_id_providers_id_fkey",
+        "e|fk|public.plans.plans_source_provider_id_providers_id_fkey",
+        "n|con|public.plans.plans_source_provider_id_providers_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.plans",
+        "n|sch|public",
+        "n|tbl|public.providers",
+        "n|sch|public",
+        "n|col|public.plans.source_provider_id",
+        "n|col|public.providers.id",
+        "e|uniqueness|public.providers.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "plans"
+      ],
+      "writes": [
+        "s|fk|public.plans.plans_target_provider_id_providers_id_fkey",
+        "n|fk|public.plans.plans_target_provider_id_providers_id_fkey",
+        "e|fk|public.plans.plans_target_provider_id_providers_id_fkey",
+        "n|con|public.plans.plans_target_provider_id_providers_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.plans",
+        "n|sch|public",
+        "n|tbl|public.providers",
+        "n|sch|public",
+        "n|col|public.plans.target_provider_id",
+        "n|col|public.providers.id",
+        "e|uniqueness|public.providers.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "migration_logs"
+      ],
+      "writes": [
+        "s|fk|public.migration_logs.migration_logs_migration_id_migrations_id_fkey",
+        "n|fk|public.migration_logs.migration_logs_migration_id_migrations_id_fkey",
+        "e|fk|public.migration_logs.migration_logs_migration_id_migrations_id_fkey",
+        "n|con|public.migration_logs.migration_logs_migration_id_migrations_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.migration_logs",
+        "n|sch|public",
+        "n|tbl|public.migrations",
+        "n|sch|public",
+        "n|col|public.migration_logs.migration_id",
+        "n|col|public.migrations.id",
+        "e|uniqueness|public.migrations.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "migrations"
+      ],
+      "writes": [
+        "s|fk|public.migrations.migrations_plan_id_plans_id_fkey",
+        "n|fk|public.migrations.migrations_plan_id_plans_id_fkey",
+        "e|fk|public.migrations.migrations_plan_id_plans_id_fkey",
+        "n|con|public.migrations.migrations_plan_id_plans_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.migrations",
+        "n|sch|public",
+        "n|tbl|public.plans",
+        "n|sch|public",
+        "n|col|public.migrations.plan_id",
+        "n|col|public.plans.id",
+        "e|uniqueness|public.plans.id"
+      ]
+    }
+  ],
+  "ddl": [
+    {
+      "schema": "public",
+      "name": "providers",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "plans",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "migration_logs",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "migrations",
+      "isRlsEnabled": false,
+      "entityType": "tables"
+    },
+    {
+      "schema": "public",
+      "name": "provider_kind",
+      "values": [
+        "xcpng",
+        "proxmox"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "provider_status",
+      "values": [
+        "unknown",
+        "ok",
+        "error"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "migration_mode",
+      "values": [
+        "cold",
+        "warm"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "log_level",
+      "values": [
+        "debug",
+        "info",
+        "warn",
+        "error"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "migration_status",
+      "values": [
+        "pending",
+        "running",
+        "succeeded",
+        "failed",
+        "canceled"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "name": "migration_step",
+      "values": [
+        "precheck",
+        "prepare_source",
+        "create_target",
+        "transfer_disks",
+        "adapt_guest",
+        "start_target",
+        "verify"
+      ],
+      "entityType": "enums"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "name",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "kind",
+      "type": "provider_kind",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "url",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "insecure_tls",
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "username",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "secret_encrypted",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "status",
+      "type": "provider_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'unknown'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "status_message",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "last_checked_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "name",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "source_provider_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "target_provider_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "target_node",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "mode",
+      "type": "migration_mode",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'cold'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "network_map",
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "storage_map",
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "vms",
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "id",
+      "type": "bigint",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": {
+        "type": "always",
+        "name": "migration_logs_id_seq",
+        "increment": "1",
+        "startWith": "1",
+        "minValue": "1",
+        "maxValue": "9223372036854775807",
+        "cache": 1,
+        "cycle": false
+      },
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "migration_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "level",
+      "type": "log_level",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'info'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "step",
+      "type": "migration_step",
+      "typeSchema": "public",
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "message",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "gen_random_uuid()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "plan_id",
+      "type": "uuid",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "source_vm_uuid",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "vm_name",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "status",
+      "type": "migration_status",
+      "typeSchema": "public",
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'pending'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "current_step",
+      "type": "migration_step",
+      "typeSchema": "public",
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "progress",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "0",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "target_vmid",
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "state",
+      "type": "jsonb",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "'{}'",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "error",
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "started_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "finished_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "entityType": "columns"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "migration_logs_migration_idx",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "migration_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        },
+        {
+          "value": "id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "migrations_plan_idx",
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "plan_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "entityType": "indexes"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "plans_source_provider_id_providers_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "source_provider_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "providers",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "plans_target_provider_id_providers_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "target_provider_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "providers",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "migration_logs_migration_id_migrations_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "migration_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "migrations",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "migrations_plan_id_plans_id_fkey",
+      "nameExplicit": false,
+      "columns": [
+        "plan_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "plans",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "entityType": "fks"
+    },
+    {
+      "schema": "public",
+      "table": "providers",
+      "name": "providers_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "plans",
+      "name": "plans_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "migration_logs",
+      "name": "migration_logs_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    },
+    {
+      "schema": "public",
+      "table": "migrations",
+      "name": "migrations_pkey",
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "entityType": "pks"
+    }
+  ]
+}

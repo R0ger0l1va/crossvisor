@@ -1,0 +1,1 @@
+{ "extends": "@crossvisor/tsconfig/library.json" }

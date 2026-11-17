@@ -1,0 +1,29 @@
+{
+  "name": "@crossvisor/xcpng",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Cliente de XCP-ng (XAPI) basado en xen-api de Xen Orchestra",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch --preserveWatchOutput",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@crossvisor/contracts": "workspace:*",
+    "xen-api": "^5.1.0"
+  },
+  "devDependencies": {
+    "@crossvisor/tsconfig": "workspace:*",
+    "@types/node": "^24.0.0",
+    "typescript": "^6.0.2"
+  }
+}

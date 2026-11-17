@@ -1,0 +1,22 @@
+# Infraestructura local para desarrollo.
+# PostgreSQL guarda los datos de la app (schema "public") y la cola de
+# trabajos de BullMQ (schema "bullmq"), así que no hace falta Redis.
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: crossvisor
+      POSTGRES_PASSWORD: crossvisor
+      POSTGRES_DB: crossvisor
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crossvisor"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata:
